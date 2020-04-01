@@ -9,6 +9,13 @@ namespace ImageCombine
         private static void Main()
         {
             DirectoryInfo info = new DirectoryInfo("./images");
+            if (!info.Exists)
+            {
+                info.Create();
+                Console.WriteLine("auto create images Directory, please put images");
+                Console.Read();
+                return;
+            }
             List<string> files = new List<string>();
             var fileinfos = info.GetFiles();
             foreach (var f in fileinfos)
